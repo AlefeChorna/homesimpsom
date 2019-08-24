@@ -1,16 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+
+import Routes from './routes';
 
 const App = () => {
-  return <View><Text>Hello World!</Text></View>
-};
+  return (
+    <>
+      <StatusBar 
+        translucent 
+        backgroundColor="transparent" 
+        barStyle="dark-content" />
+
+      <Routes />
+    </>
+  );
+}
 
 export default App;
