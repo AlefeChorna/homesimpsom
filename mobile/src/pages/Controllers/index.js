@@ -1,26 +1,26 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Header from '../../components/Header';
 import TabBottomItem from '../../components/TabBottomItem';
+import Header from '../../components/Header';
 import Add from '../../components/FloatingButton/Add';
 
 import { Container } from './styles';
 
-const Main = () => (
+const Controllers = () => (
   <Container>
     <Header 
       showLogo 
       showSearchButton
       showAccountButton />
-      
+
     <Add onPress={() => {}} />
   </Container>
 );
 
-Main.navigationOptions = {
-  tabBarIcon: ({ tintColor }) => <Icon name="home" color={tintColor} size={24} />,
-  tabBarLabel: ({ tintColor }) => <TabBottomItem textColor={tintColor} text="Rotinas" />
+Controllers.navigationOptions = {
+  tabBarIcon: ({ tintColor }) => <Icon name="file-tree" color={tintColor} size={23} />,
+  tabBarLabel: ({ tintColor }) => <TabBottomItem textColor={tintColor} text="Controladores" />
 }
 
-export default Main;
+export default Controllers;
