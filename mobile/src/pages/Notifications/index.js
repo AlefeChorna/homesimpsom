@@ -8,7 +8,9 @@ import { Container } from './styles';
 
 const Notifications = () => (
   <Container>
-    <Header title="Notificações" />
+    <Header 
+      showLogo
+      showAccountButton />
   </Container>
 );
 

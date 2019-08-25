@@ -8,7 +8,9 @@ import { Container } from './styles';
 
 const Statistics = () => (
   <Container>
-    <Header title="Estatísticas" />
+    <Header 
+      showLogo
+      showAccountButton />
   </Container>
 );
 

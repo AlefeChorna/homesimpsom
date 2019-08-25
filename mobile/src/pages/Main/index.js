@@ -10,9 +10,10 @@ import { Container } from './styles';
 const Main = () => (
   <Container>
     <Header 
-      title="Rotinas"
-      showSearchButton />
-
+      showLogo 
+      showSearchButton
+      showAccountButton />
+      
     <Add onPress={() => {}} />
   </Container>
 );

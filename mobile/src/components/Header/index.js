@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 
 import { 
-  Container, 
+  Container,
+  LogoContainer,
+  Logo, 
   ButtonContainer, 
   EmptyContainer,
   TitleContainer,
@@ -21,18 +23,32 @@ const headerColor = [
 
 const Header = ({
   title,
+  showLogo,
   showBackButton,
   onBack,
   showSearchButton,
   onSearch,
   showDeleteButton,
-  onDelete
+  onDelete,
+  showAccountButton,
+  onAccount
 }) => {
-  const renderBackButton = () => {
-    if (!showBackButton) return <EmptyContainer />;
+  const renderLogo = () => {
+    if (!showLogo) return showBackButton ? null : <EmptyContainer />;
 
     return (
-      <ButtonContainer onPress={onBack} onLongPress={onPress}>
+      <LogoContainer onPress={onBack}>
+        <Icon name="car-brake-hold" color={colors.white} size={29} />
+        <Logo  />
+      </LogoContainer>
+    );
+  }
+
+  const renderBackButton = () => {
+    if (!showBackButton) return null;
+
+    return (
+      <ButtonContainer onPress={onBack}>
         <Icon name="arrow-left" color={colors.white} size={25} />
       </ButtonContainer>
     );
@@ -41,8 +57,10 @@ const Header = ({
   const renderSearchButton = () => {
     if (!showSearchButton) return <EmptyContainer />;
 
+    const width = (showDeleteButton || showAccountButton) ? 35 : 50;
+
     return (
-      <ButtonContainer width={showDeleteButton ? 35 : 50}>
+      <ButtonContainer width={width}>
         <Icon name="magnify" color={colors.white} size={23} />
       </ButtonContainer>
     );
@@ -54,10 +72,19 @@ const Header = ({
     return (
       <ButtonContainer 
         width={showSearchButton ? 35 : 50}
-        onPress={onDelete} 
-        onLongPress={onDelete}
+        onPress={onDelete}
       >
         <Icon name="delete" color={colors.white} size={23} />
+      </ButtonContainer>
+    );
+  }
+
+  const renderAccountButton = () => {
+    if (!showAccountButton) return null;
+
+    return (
+      <ButtonContainer onPress={onAccount}>
+        <Icon name="alpha-a-circle" color={colors.white} size={27} />
       </ButtonContainer>
     );
   }
@@ -70,6 +97,7 @@ const Header = ({
       end={{ x: 1, y: 1 }}
     >
       <Container>
+        {renderLogo()}
         {renderBackButton()}
 
         <TitleContainer>
@@ -78,6 +106,7 @@ const Header = ({
 
         {renderSearchButton()}
         {renderDeleteButton()}
+        {renderAccountButton()}
       </Container>
     </LinearGradient>
   );
@@ -91,19 +120,24 @@ const styles = StyleSheet.create({
 });
 
 Header.defaultProps = {
+  showLogo: false,
   showBackButton: false,
   showSearchButton: false,
-  showDeleteButton: false
+  showDeleteButton: false,
+  showAccountButton: false,
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  showLogo: PropTypes.bool,
   showBackButton: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   showDeleteButton: PropTypes.bool,
+  showAccountButton: PropTypes.bool,
   onBack: PropTypes.func,
   onSearch: PropTypes.func,
   onDelete: PropTypes.func,
+  onAccount: PropTypes.func
 }
 
 export default Header;
