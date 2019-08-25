@@ -3,12 +3,17 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Header from '../../components/Header';
 import TabBottomItem from '../../components/TabBottomItem';
+import Add from '../../components/FloatingButton/Add';
 
 import { Container } from './styles';
 
 const Main = () => (
   <Container>
-    <Header />
+    <Header 
+      title="Rotinas"
+      showSearchButton />
+
+    <Add onPress={() => {}} />
   </Container>
 );
 

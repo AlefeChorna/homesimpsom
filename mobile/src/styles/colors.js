@@ -8,6 +8,9 @@ export default {
 
   gray: '#FFFE',
 
+  greenTeal300: '#00C4B4',
+  greenTeal400: '#00B3A7',
+
   regular: '#999',
   dark: '#555',
   darker: '#333',

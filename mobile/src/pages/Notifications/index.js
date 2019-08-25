@@ -2,10 +2,15 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import TabBottomItem from '../../components/TabBottomItem';
+import Header from '../../components/Header';
 
 import { Container } from './styles';
 
-const Notifications = () => <Container />;
+const Notifications = () => (
+  <Container>
+    <Header title="Notificações" />
+  </Container>
+);
 
 Notifications.navigationOptions = {
   tabBarIcon: ({ tintColor }) => <Icon name="bell" color={tintColor} size={22} />,
